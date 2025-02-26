@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Netflix</string>
+    <string name="enter_your_email">Enter Your Email</string>
+    <string name="enter_your_password"> Enter Your Password</string>
+    <string name="login">Login</string>
+    <string name="click_me">Click Me</string>
+    <string name="todo">TODO</string>
+    <string name="help">Help</string>
+    <string name="sign_in">Sign in</string>
+    <string name="password"> Password</string>
+    <string name="netflix_logo">Netflix Logo</string>
+    <string name="show_password">Show Password</string>
+    <string name="need_help">Need help?</string>
+    <string name="new_to_netflix_sign_up_now">New to Netflix? Sign up now.</string>
+    <string name="email_or_phone_number">Email or phone number</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_your_pass">enter your pass</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="next">Next</string>
+    <string name="enter_your_passwor">Enter Your Password</string>
+    <string name="enter_your_passq">enter your pass</string>
+    <string name="enter_your_email2">Enter your email</string>
+    <string name="enter_your_email3">Enter Your Email</string>
+    <string name="enter_your_name5">enter your name</string>
+    <string name="enter_your_name7">Enter Your Name</string>
+</resources>

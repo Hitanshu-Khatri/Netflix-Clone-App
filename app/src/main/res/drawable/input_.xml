@@ -1,0 +1,6 @@
+<!-- res/drawable/edit_text_rounded.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#2B2D30"/> <!-- Background color of the EditText -->
+    <corners android:radius="10dp"/> <!-- Set the corner radius -->
+    <stroke android:color="#2B2D30" android:width="1dp"/> <!-- Optional: border color and width -->
+</shape>
