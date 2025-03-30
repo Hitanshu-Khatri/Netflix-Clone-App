@@ -29,7 +29,9 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".HomeActivity" />
-
+        <activity android:name=".TvShowsActivity"/>
+        <activity android:name=".MovieActivity"/>
+        <activity android:name=".DescriptionActivity"/>
     </application>
 
 </manifest>

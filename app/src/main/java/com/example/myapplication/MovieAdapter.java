@@ -1,56 +1,67 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
-
+import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
+    private List<Movie> movies;
     private Context context;
-    private List<Movie> movieList;
 
-    public MovieAdapter(Context context, List<Movie> movieList) {
+    public MovieAdapter(Context context, List<Movie> movies) {
         this.context = context;
-        this.movieList = movieList;
+        this.movies = movies;
     }
 
     @NonNull
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_movie, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_movie2, parent, false);
         return new MovieViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
-        Movie movie = movieList.get(position);
-        holder.titleTextView.setText(movie.getTitle());
-        Glide.with(context).load(movie.getPosterPath()).into(holder.posterImageView);
+        Movie movie = movies.get(position);
+        Picasso.get()
+                .load("https://image.tmdb.org/t/p/w500" + movie.getPosterPath())
+                .into(holder.imageView);
+
+        // Set OnClickListener
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, DescriptionActivity.class);
+            intent.putExtra("ITEM_ID", movie.getId()); // Pass movie ID
+            intent.putExtra("ITEM_TYPE", "movie"); // Indicate it's a movie
+            context.startActivity(intent);
+        });
     }
 
     @Override
     public int getItemCount() {
-        return movieList.size();
+        return movies.size();
+    }
+
+    public void addMovies(List<Movie> newMovies) {
+        int startPosition = movies.size();
+        movies.addAll(newMovies);
+        notifyItemRangeInserted(startPosition, newMovies.size());
     }
 
     public static class MovieViewHolder extends RecyclerView.ViewHolder {
-        ImageView posterImageView;
-        TextView titleTextView;
+        ImageView imageView;
 
-        public MovieViewHolder(@NonNull View itemView) {
+        public MovieViewHolder(View itemView) {
             super(itemView);
-            posterImageView = itemView.findViewById(R.id.imageViewPoster);
-            titleTextView = itemView.findViewById(R.id.textViewTitle);
+            imageView = itemView.findViewById(R.id.moviePoster);
         }
+
+
     }
 }
-

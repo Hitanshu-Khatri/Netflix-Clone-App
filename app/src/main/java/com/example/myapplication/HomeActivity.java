@@ -1,8 +1,14 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.squareup.picasso.Picasso;
 import java.util.List;
@@ -17,6 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     private static final String BASE_URL = "https://api.themoviedb.org/3/";
     private static final String API_KEY = "f339571cd5d90bc05b2b32cd85fa6e11";
 
+    private Button TvshowsButton;
     private ImageView bannerImage;
     private LinearLayout continueWatchingLayout;
     private LinearLayout continueWatchingLayout2;
@@ -108,6 +115,30 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<MovieResponse> call, Throwable t) {
                 t.printStackTrace();
+            }
+        });
+
+        TextView tvShowsText = findViewById(R.id.tvshows);
+
+        tvShowsText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(HomeActivity.this, "TV Shows Clicked!", Toast.LENGTH_SHORT).show();
+
+                 Intent intent = new Intent(HomeActivity.this, TvShowsActivity.class);
+                 startActivity(intent);
+            }
+        });
+
+        TextView Movie = findViewById(R.id.movies);
+
+        Movie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(HomeActivity.this, "Movies Clicked!", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(HomeActivity.this, MovieActivity.class);
+                startActivity(intent);
             }
         });
     }
