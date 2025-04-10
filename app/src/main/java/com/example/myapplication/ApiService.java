@@ -21,5 +21,12 @@ public interface ApiService {
             @Query("api_key") String apiKey,
             @Query("page") int page
     );
+    @GET("search/multi")
+    Call<TmdbSearchResponse> searchMulti(
+            @Query("api_key") String apiKey,
+            @Query("query") String query,
+            @Query("page") int page // Optional: For pagination
+            // Add other params like @Query("include_adult") boolean includeAdult if needed
+    );
 }
 

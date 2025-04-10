@@ -48,7 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:text="Movies"
+                    android:text="@string/movies"
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
 
@@ -56,7 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:text="Categories"
+                    android:text="@string/categories"
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -65,15 +65,15 @@
                 android:id="@+id/banner_image"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="16dp"
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Exciting • Reality TV • Competition"
+                android:text="@string/exciting_reality_tv_competition"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
@@ -124,7 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="Continue Watching for Ellie"
+                android:text="@string/continue_watching_for_ellie"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -138,29 +138,22 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:id="@+id/continue_watching_layout"
-                        android:layout_width="150dp"
-                        android:layout_height="200dp"
-                        android:layout_margin="5dp"
-                        android:baselineAligned="false"
-                        android:orientation="horizontal" >
+                    <HorizontalScrollView
+                        android:id="@+id/continue_watching_scroll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:scrollbars="none">
 
-                    </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/continue_watching_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" />
+                    </HorizontalScrollView>
 
-                    <LinearLayout
-                        android:id="@+id/continue_watching_layout2"
-                        android:layout_width="150dp"
-                        android:layout_height="200dp"
-                        android:layout_margin="5dp"
-                        android:orientation="horizontal" />
-
-                    <LinearLayout
-                        android:id="@+id/continue_watching_layout3"
-                        android:layout_width="150dp"
-                        android:layout_height="200dp"
-                        android:layout_margin="5dp"
-                        android:orientation="horizontal" />
                 </LinearLayout>
             </HorizontalScrollView>
 
@@ -170,64 +163,73 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="Action"
+                android:text="@string/action"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            <LinearLayout
-                android:text="Action"
-                android:id="@+id/action_movies_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp" />
+
+                <LinearLayout
+                    android:id="@+id/action_movies_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:text="@string/action" />
             </HorizontalScrollView>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="Comedy"
+                android:text="@string/comedy"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            <LinearLayout
-                android:text="Comedy"
-                android:id="@+id/comedy_movies_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp" />
+
+                <LinearLayout
+                    android:id="@+id/comedy_movies_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:text="Comedy" />
             </HorizontalScrollView>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="Horror"
+                android:text="@string/horror"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            <LinearLayout
-                android:text="Horror"
-                android:id="@+id/horror_movies_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp" />
+
+                <LinearLayout
+                    android:id="@+id/horror_movies_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:text="Horror" />
             </HorizontalScrollView>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="Thriller"
+                android:text="@string/thriller"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -254,15 +256,19 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="47dp"
         android:background="@color/black"
         android:gravity="center">
 
+
         <ImageButton
             android:id="@+id/imageButton7"
-            android:layout_width="75dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="20dp"
+            android:layout_width="101dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="16dp"
             android:background="@null"
             android:contentDescription="Home"
             android:scaleType="centerInside"
@@ -270,12 +276,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-
         <ImageButton
             android:id="@+id/imageButton8"
-            android:layout_width="85dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="95dp"
+            android:layout_width="102dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="108dp"
             android:background="@null"
             android:contentDescription="Search"
             android:scaleType="centerInside"
@@ -285,24 +290,27 @@
 
         <ImageButton
             android:id="@+id/imageButton9"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="131dp"
+            android:layout_width="101dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="208dp"
             android:background="@null"
             android:contentDescription="Downloads"
             android:scaleType="centerInside"
             android:src="@drawable/global_download"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
             android:id="@+id/imageButton10"
-            android:layout_width="131dp"
-            android:layout_height="40dp"
+            android:layout_width="102dp"
+            android:layout_height="47dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="4dp"
             android:background="@null"
             android:contentDescription="Profile"
             android:scaleType="centerInside"
-            android:src="@drawable/user"
+            android:src="@drawable/profile_blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

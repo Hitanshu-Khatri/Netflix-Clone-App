@@ -23,4 +23,17 @@
     <string name="enter_your_email3">Enter Your Email</string>
     <string name="enter_your_name5">enter your name</string>
     <string name="enter_your_name7">Enter Your Name</string>
+    <string name="name">Enter Your Name</string>
+    <string name="pass">Enter Your Password</string>
+    <string name="cpass">Confirm Password</string>
+    <string name="sign">Sign in</string>
+    <string name="my_downloads">My Downloads</string>
+    <string name="action">Action</string>
+    <string name="continue_watching_for_ellie">Continue Watching for Ellie</string>
+    <string name="movies">Movies</string>
+    <string name="categories">Categories</string>
+    <string name="exciting_reality_tv_competition">Exciting • Reality TV • Competition</string>
+    <string name="comedy">Comedy</string>
+    <string name="horror">Horror</string>
+    <string name="thriller">Thriller</string>
 </resources>

@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -37,7 +39,7 @@ public class DescriptionActivity extends AppCompatActivity {
         movieTitle = findViewById(R.id.movieTitle);
         movieDescription = findViewById(R.id.movieDescription);
 //        playButton = findViewById(R.id.playButton);
-//        myListButton = findViewById(R.id.myListButton);
+        myListButton = findViewById(R.id.myListButton);
 
         // Get movie ID from Intent
         Intent intent = getIntent();
@@ -54,9 +56,10 @@ public class DescriptionActivity extends AppCompatActivity {
 //            // Start playback or navigate to the player screen
 //        });
 
-//        myListButton.setOnClickListener(v -> {
-//            // Add the movie/TV show to the user's list
-//        });
+        myListButton.setOnClickListener(v -> {
+            // Add the movie/TV show to the user's list
+            Toast.makeText(DescriptionActivity.this, "Added to My List", Toast.LENGTH_SHORT).show();
+        });
     }
 
     private void fetchMovieDetails(int movieId) {

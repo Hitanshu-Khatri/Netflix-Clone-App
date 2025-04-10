@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item
+            android:id="@+id/lang_english"
+            android:title="English"/>
+        <item
+            android:id="@+id/lang_spanish"
+            android:title="Español"/>
+        <item
+            android:id="@+id/lang_french"
+            android:title="Français"/>
+
+
+</menu>

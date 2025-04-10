@@ -3,15 +3,18 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,11 +26,8 @@ public class HomeActivity extends AppCompatActivity {
     private static final String BASE_URL = "https://api.themoviedb.org/3/";
     private static final String API_KEY = "f339571cd5d90bc05b2b32cd85fa6e11";
 
-    private Button TvshowsButton;
     private ImageView bannerImage;
     private LinearLayout continueWatchingLayout;
-    private LinearLayout continueWatchingLayout2;
-    private LinearLayout continueWatchingLayout3;
     private LinearLayout actionMoviesLayout;
     private LinearLayout comedyMoviesLayout;
     private LinearLayout horrorMoviesLayout;
@@ -39,15 +39,43 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         bannerImage = findViewById(R.id.banner_image);
-        continueWatchingLayout = findViewById(R.id.continue_watching_layout);
-        continueWatchingLayout2 = findViewById(R.id.continue_watching_layout2);
-        continueWatchingLayout3 = findViewById(R.id.continue_watching_layout3);
+        continueWatchingLayout = findViewById(R.id.continue_watching_container);
         actionMoviesLayout = findViewById(R.id.action_movies_layout);
         comedyMoviesLayout = findViewById(R.id.comedy_movies_layout);
         horrorMoviesLayout = findViewById(R.id.horror_movies_layout);
         thrillerMoviesLayout = findViewById(R.id.thriller_movies_layout);
 
         fetchMovies();
+
+        ImageButton settingsBtn = findViewById(R.id.imageButton10);
+        settingsBtn.setOnClickListener(v -> {
+            Toast.makeText(HomeActivity.this, "User Settings", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(HomeActivity.this, languageActivity.class));
+        });
+
+        ImageButton searchBtn = findViewById(R.id.imageButton8);
+        searchBtn.setOnClickListener(v -> {
+            Toast.makeText(HomeActivity.this, "Search", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(HomeActivity.this, SearchActivity.class));
+        });
+
+        ImageButton downloadBtn = findViewById(R.id.imageButton9);
+        downloadBtn.setOnClickListener(v -> {
+            Toast.makeText(HomeActivity.this, "Downloads", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(HomeActivity.this, DownloadsActivity.class));
+        });
+
+        TextView tvShows = findViewById(R.id.tvshows);
+        tvShows.setOnClickListener(v -> {
+            Toast.makeText(HomeActivity.this, "TV Shows Clicked!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(HomeActivity.this, TvShowsActivity.class));
+        });
+
+        TextView movies = findViewById(R.id.movies);
+        movies.setOnClickListener(v -> {
+            Toast.makeText(HomeActivity.this, "Movies Clicked!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(HomeActivity.this, MovieActivity.class));
+        });
     }
 
     private void fetchMovies() {
@@ -70,41 +98,24 @@ public class HomeActivity extends AppCompatActivity {
                                 .into(bannerImage);
                     }
 
-                    for (int i = 0; i < movies.size(); i++) {
-                        Movie movie = movies.get(i);
-                        ImageView moviePoster = new ImageView(HomeActivity.this);
-                        moviePoster.setLayoutParams(new LinearLayout.LayoutParams(300, 450));
-                        moviePoster.setPadding(10, 10, 10, 10);
+                    for (Movie movie : movies) {
+                        ImageView posterView = createPosterView(movie);
+                        continueWatchingLayout.addView(posterView);
 
-                        Picasso.get().load("https://image.tmdb.org/t/p/w500" + movie.getPosterPath()).into(moviePoster);
-
-                        if (i % 3 == 0) {
-                            continueWatchingLayout.addView(moviePoster);
-                        } else if (i % 3 == 1) {
-                            continueWatchingLayout2.addView(moviePoster);
-                        } else {
-                            continueWatchingLayout3.addView(moviePoster);
-                        }
-
-                        // Populate genre sections (Clone approach for multiple genres)
                         for (int genreId : movie.getGenreIds()) {
-                            ImageView genreMoviePoster = new ImageView(HomeActivity.this);
-                            genreMoviePoster.setLayoutParams(new LinearLayout.LayoutParams(300, 450));
-                            genreMoviePoster.setPadding(10, 10, 10, 10);
-                            Picasso.get().load("https://image.tmdb.org/t/p/w500" + movie.getPosterPath()).into(genreMoviePoster);
-
+                            ImageView genrePoster = createPosterView(movie);
                             switch (genreId) {
                                 case 28:
-                                    actionMoviesLayout.addView(genreMoviePoster);
+                                    actionMoviesLayout.addView(genrePoster);
                                     break;
                                 case 35:
-                                    comedyMoviesLayout.addView(genreMoviePoster);
+                                    comedyMoviesLayout.addView(genrePoster);
                                     break;
                                 case 27:
-                                    horrorMoviesLayout.addView(genreMoviePoster);
+                                    horrorMoviesLayout.addView(genrePoster);
                                     break;
                                 case 53:
-                                    thrillerMoviesLayout.addView(genreMoviePoster);
+                                    thrillerMoviesLayout.addView(genrePoster);
                                     break;
                             }
                         }
@@ -117,29 +128,22 @@ public class HomeActivity extends AppCompatActivity {
                 t.printStackTrace();
             }
         });
+    }
 
-        TextView tvShowsText = findViewById(R.id.tvshows);
+    private ImageView createPosterView(Movie movie) {
+        ImageView imageView = new ImageView(HomeActivity.this);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(300, 450);
+        params.setMargins(10, 10, 10, 10);
+        imageView.setLayoutParams(params);
 
-        tvShowsText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(HomeActivity.this, "TV Shows Clicked!", Toast.LENGTH_SHORT).show();
+        Picasso.get().load("https://image.tmdb.org/t/p/w500" + movie.getPosterPath()).into(imageView);
 
-                 Intent intent = new Intent(HomeActivity.this, TvShowsActivity.class);
-                 startActivity(intent);
-            }
+        imageView.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, DescriptionActivity.class);
+            intent.putExtra("ITEM_ID", movie.getId());
+            startActivity(intent);
         });
 
-        TextView Movie = findViewById(R.id.movies);
-
-        Movie.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(HomeActivity.this, "Movies Clicked!", Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(HomeActivity.this, MovieActivity.class);
-                startActivity(intent);
-            }
-        });
+        return imageView;
     }
 }

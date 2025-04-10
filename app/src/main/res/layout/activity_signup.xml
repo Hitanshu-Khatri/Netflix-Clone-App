@@ -11,13 +11,14 @@
         android:id="@+id/editText"
         android:layout_width="371dp"
         android:layout_height="60dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="219dp"
         android:background="@drawable/input_bg"
         android:hint="@string/enter_your_email2"
         android:inputType="text"
         android:textColor="#FFFFFF"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="20dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/Name"
@@ -25,7 +26,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/input_bg"
-        android:hint="Enter Your Name"
+        android:hint="@string/name"
         android:inputType="text"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +40,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="376dp"
         android:background="@drawable/input_bg"
-        android:hint="Enter Your Password"
+        android:hint="@string/pass"
         android:inputType="text"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -55,7 +56,7 @@
         android:layout_marginBottom="308dp"
         android:autofillHints="sdfgh"
         android:background="@drawable/input_bg"
-        android:hint="Confirm Password"
+        android:hint="@string/cpass"
         android:inputType="text"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
